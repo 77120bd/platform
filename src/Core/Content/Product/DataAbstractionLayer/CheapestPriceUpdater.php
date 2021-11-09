@@ -172,7 +172,7 @@ class CheapestPriceUpdater
             'LOWER(HEX(product.id)) as variant_id',
             'NULL as rule_id',
             '0 AS is_ranged',
-            'product.price as price',
+            'IFNULL(product.price, parent.price) as price',
             'IFNULL(product.min_purchase, parent.min_purchase) as min_purchase',
             'LOWER(HEX(IFNULL(product.unit_id, parent.unit_id))) as unit_id',
             'IFNULL(product.purchase_unit, parent.purchase_unit) as purchase_unit',
