@@ -56,6 +56,10 @@ class EntityHydrator
     {
         self::$hydrated = [];
 
+        if(count($rows) > 1000) {
+            return $collection;
+        }
+        
         foreach ($rows as $row) {
             $collection->add($this->hydrateEntity($definition, $entityClass, $row, $root, $context));
         }
